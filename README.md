@@ -36,10 +36,16 @@ schemas are required.
 
 ## Install into a profile
 
-`dsh plugin` forwards to pnpm inside the profile directory, so a `link:` install
-keeps this checkout live (edits to `lib/*.js` apply on the next dsh restart;
-client bundle edits need no build step because the bundle is hand-written in the
-module-loader format):
+Install from GitHub:
+
+```bash
+npx @deepseek-ai/dsh plugin --profile web add github:Yiklek/dsh-archived-list
+```
+
+For development, a `link:` install instead keeps this checkout live (`dsh plugin`
+forwards to pnpm inside the profile directory; edits to `lib/*.js` apply on the
+next dsh restart; client bundle edits need no build step because the bundle is
+hand-written in the module-loader format):
 
 ```bash
 dsh plugin --profile web add link:../../projects/dsh-archived-list
