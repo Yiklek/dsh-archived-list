@@ -51,13 +51,11 @@ hand-written in the module-loader format):
 dsh plugin --profile web add link:../../projects/dsh-archived-list
 ```
 
-Then add one row to `~/.dsh/profiles/web/cordis.patch.yml` (replacing `[]`):
-
-```yaml
-- insert:
-    - id: archived-list
-      name: dsh-archived-list
-```
+This package is a standard dsh bundle plugin: `package.json` declares
+`dsh.bundle.patch` pointing at its `cordis.patch.yml`, so `dsh plugin add`
+automatically adds the package to `dsh.profile.bundles` and loads this plugin's
+own patch layer. No manual edit to `~/.dsh/profiles/web/cordis.patch.yml` is
+needed.
 
 Restart dsh (`dsh web`) to activate. To verify the composition without booting
 the app: `dsh --profile web --dump-config | grep -A2 archived-list`.
