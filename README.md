@@ -11,9 +11,10 @@ view and restore **archived sessions** from a dedicated page in the web Settings
 - **Multi-select**: checkbox per row and per workspace group, plus a toolbar
   (已选 N 项) with 恢复所选 / 删除所选 / 取消选择.
 - **恢复 / Restore** removes the session id from the durable `archivedSessionIds`
-  set through `workspaceRegistry`'s own serialized write path, then opens the
-  restored conversation and closes Settings. Batch restore closes Settings and
-  opens the session when exactly one was selected.
+  set through `workspaceRegistry`'s own serialized write path. By default it
+  does not auto-open the restored conversation and keeps Settings open; the
+  page includes two toggles to enable **auto-open** and **close Settings after
+  restore** (persisted in browser localStorage).
 - **删除 / Destroy** permanently deletes one archived session (or the whole
   selection, behind the same double confirmation): the host reads the durable
   header to locate the log, detaches workspace accounting, removes the id from
