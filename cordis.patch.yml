@@ -1,3 +1,6 @@
 - insert:
     - id: archived-list
       name: dsh-archived-list
+      disabled: !!js >-
+        [...ctx.loader.entries()].some((e) => e.options.name === 'dsh-archived-list' &&
+        e.options.id !== 'archived-list' && !e.disabled)
